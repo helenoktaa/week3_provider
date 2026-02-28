@@ -104,3 +104,24 @@ class AddButton extends StatelessWidget {
     );
   }
 }
+
+// Halaman Keranjang
+class MyCart extends StatelessWidget {
+  const MyCart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    //context.watch membuat widget
+    //rebuild tiap kali CartModel berubah
+    var cart = context.watch<CartModel>();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Keranjang Belanja'),
+      ),
+      body: const Center(
+        child: Text('Keranjang Kosong'),
+      ),
+    );
+  }
+}

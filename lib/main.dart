@@ -7,9 +7,26 @@ void main() {
     //agar state bisa diakses dimana saja
     ChangeNotifierProvider(
       create: (context) => CartModel(),
-      child: const MyApp()
-    )
+      child: const MyApp(),
+    ),
   );
+}
+
+// 1. State model (business logic)
+class CartModel extends ChangeNotifier {
+  final List<String> _items = [];
+
+  List<String> get items => _items;
+
+  void add(String itemName) {
+    _items.add(itemName);
+    notifyListeners();
+  }
+
+  void removeAll() {
+    _items.clear();
+    notifyListeners();
+  }
 }
 
 class MyApp extends StatelessWidget {

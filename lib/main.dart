@@ -70,6 +70,7 @@ class MyCatalog extends StatelessWidget {
   itemBuilder: (context, index) {
     return ListTile(
       title: Text(products[index]),
+      trailing: AddButton(item: products[index]),
     );
   },
 ),

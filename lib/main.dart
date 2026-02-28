@@ -49,33 +49,38 @@ class MyApp extends StatelessWidget {
 
 // Halaman Katalog
 class MyCatalog extends StatelessWidget {
- const MyCatalog({super.key});
+  const MyCatalog({super.key});
 
- @override
- Widget build(BuildContext context) {
-  final products = ['Nasi Goreng', 'Sate Ayam', 
-  'Es Teh', 'Ayam Bakar','Kopi'];
- return Scaffold(
-  appBar: AppBar(
-    title: const Text('Katalog Makanan'),
-    actions: [
-  IconButton(
-    icon: const Icon(Icons.shopping_cart),
-    onPressed: () => Navigator.pushNamed(context, '/cart'),
-  ),
-],
-  ),
-  body: ListView.builder(
-  itemCount: products.length,
-  itemBuilder: (context, index) {
-    return ListTile(
-      title: Text(products[index]),
-      trailing: AddButton(item: products[index]),
+  @override
+  Widget build(BuildContext context) {
+    final products = [
+      'Nasi Goreng',
+      'Sate Ayam',
+      'Es Teh',
+      'Ayam Bakar',
+      'Kopi',
+    ];
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Katalog Makanan'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () => Navigator.pushNamed(context, '/cart'),
+          ),
+        ],
+      ),
+      body: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(products[index]),
+            trailing: AddButton(item: products[index]),
+          );
+        },
+      ),
     );
-  },
-),
- );
- }
+  }
 }
 
 // Widget Tombol Tambah (Menggunakan Provider)
@@ -116,11 +121,19 @@ class MyCart extends StatelessWidget {
     var cart = context.watch<CartModel>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Keranjang Belanja'),
-      ),
-      body: const Center(
-        child: Text('Keranjang Kosong'),
+      appBar: AppBar(title: const Text('Keranjang Belanja')),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart.items.length,
+              itemBuilder: (context, index) => ListTile(
+                leading: const Icon(Icons.fastfood),
+                title: Text(cart.items[index]),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

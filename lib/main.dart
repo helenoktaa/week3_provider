@@ -46,3 +46,13 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// Halaman Katalog
+class MyCatalog extends StatelessWidget {
+ const MyCatalog({super.key});
+
+ @override
+ Widget build(BuildContext context) {
+ return Container();
+ }
+}

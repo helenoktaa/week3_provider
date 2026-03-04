@@ -1,4 +1,4 @@
-import 'package:catalogue/features/cart/domain/entities/product.dart';
+import 'package:catalog/features/cart/domain/entities/product.dart';
 
 abstract class CartRepository {
 List<Product> getCartItems();
